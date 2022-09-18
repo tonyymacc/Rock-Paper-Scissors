@@ -9,7 +9,7 @@ const scissors = document.querySelector('.scissors')
 if (rock) {
     rock.addEventListener('click', () => {
       console.log('btn clicked')
-      playerSelection = 'rock'
+      playerSelection = 'Rock'
       console.log('Selection: ' + playerSelection)
       playRound()
     })
@@ -18,7 +18,7 @@ if (rock) {
   if (paper) {
     paper.addEventListener('click', () => {
       console.log('btn clicked')
-      playerSelection = 'paper'
+      playerSelection = 'Paper'
       console.log('Selection: ' + playerSelection)
       playRound()
     })
@@ -27,52 +27,61 @@ if (rock) {
   if (scissors) {
     scissors.addEventListener('click', () => {
       console.log('btn clicked')
-      playerSelection = 'scissors'
+      playerSelection = 'Scissors'
       console.log('Selection: ' + playerSelection)
       playRound()
     })
   }
 
 function computerPlay() {
-    const index = ['rock', 'paper', 'scissors']
+    const index = ['Rock', 'Paper', 'sScissors']
     return index [Math.floor(Math.random() * index.length)]
 }
 
 function playRound() {
 
-    console.log('Round ' + roundCounter + '...FIGHT!')
+    // console.log('Round ' + roundCounter + '...FIGHT!')
     let computerSelection = computerPlay()
     let result = ""
 
-    if (playerSelection === 'rock' && computerSelection === 'scissors' ||
-        playerSelection === 'scissors' && computerSelection === 'paper' ||
-        playerSelection === 'paper' && computerSelection === 'rock') {
+    if (playerSelection === 'Rock' && computerSelection === 'Scissors' ||
+        playerSelection === 'Scissors' && computerSelection === 'Paper' ||
+        playerSelection === 'Paper' && computerSelection === 'Rock') {
         
         playerScore++
         result = 'You win! ' + playerSelection + ' beats ' + computerSelection
+        document.querySelector('.result').innerHTML = result
+
     }
     else if (playerSelection === computerSelection) {
         result = 'It\'s a tie. You both chose ' + playerSelection
+        document.querySelector('.result').innerHTML = result
+
     }
     else {
         computerScore++
         result = 'You lose! ' + computerSelection + ' beats ' + playerSelection
+        document.querySelector('.result').innerHTML = result
     }
 
-    if (playerScore === 3) {
+    if (playerScore === 5) {
         result = 'You won the game!'
+        document.querySelector('.result').innerHTML = result
         playerScore = 0
         computerScore = 0
-        return
     }
-    else if (computerScore === 3) {
+    else if (computerScore === 5) {
         result = 'Opponent won the game!'
+        document.querySelector('.result').innerHTML = result
         playerScore = 0
         computerScore = 0
-        return
+        document.querySelector('.player-score').innerHTML = playerScore
+        document.querySelector('.computer-score').innerHTML = computerScore
     }
     else {
-        roundCounter++
+        // roundCounter++
+        document.querySelector('.player-score').innerHTML = playerScore
+        document.querySelector('.computer-score').innerHTML = computerScore
         console.log(result)
         console.log('Player Score: ' + playerScore + ' |' + ' Opponent Score: ' + computerScore )
     }
