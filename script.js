@@ -34,7 +34,7 @@ if (rock) {
   }
 
 function computerPlay() {
-    const index = ['Rock', 'Paper', 'sScissors']
+    const index = ['Rock', 'Paper', 'Scissors']
     return index [Math.floor(Math.random() * index.length)]
 }
 
