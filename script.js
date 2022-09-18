@@ -40,7 +40,7 @@ function computerPlay() {
 
 function playRound() {
 
-    print('Round ' + roundCounter + '...FIGHT!')
+    console.log('Round ' + roundCounter + '...FIGHT!')
     let computerSelection = computerPlay()
     let result = ""
 
@@ -58,7 +58,7 @@ function playRound() {
         computerScore++
         result = 'You lose! ' + computerSelection + ' beats ' + playerSelection
     }
-    
+
     if (playerScore === 3) {
         result = 'You won the game!'
         playerScore = 0
