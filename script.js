@@ -2,10 +2,36 @@ let playerScore = 0
 let computerScore = 0
 let roundCounter = 1
 
-function print(...arg) {
-    console.log(...arg)
-};
+const rock = document.querySelector('.rock')
+const paper = document.querySelector('.paper')
+const scissors = document.querySelector('.scissors')
 
+if (rock) {
+    rock.addEventListener('click', () => {
+      console.log('btn clicked')
+      playerSelection = 'rock'
+      console.log('Selection: ' + playerSelection)
+      playRound()
+    })
+  }
+
+  if (paper) {
+    paper.addEventListener('click', () => {
+      console.log('btn clicked')
+      playerSelection = 'paper'
+      console.log('Selection: ' + playerSelection)
+      playRound()
+    })
+  }
+
+  if (scissors) {
+    scissors.addEventListener('click', () => {
+      console.log('btn clicked')
+      playerSelection = 'scissors'
+      console.log('Selection: ' + playerSelection)
+      playRound()
+    })
+  }
 
 function computerPlay() {
     const index = ['rock', 'paper', 'scissors']
@@ -14,7 +40,6 @@ function computerPlay() {
 
 function playRound() {
 
-    const playerSelection = prompt('Rock Paper Scissors... SHOOT!')
     print('Round ' + roundCounter + '...FIGHT!')
     let computerSelection = computerPlay()
     let result = ""
@@ -29,17 +54,11 @@ function playRound() {
     else if (playerSelection === computerSelection) {
         result = 'It\'s a tie. You both chose ' + playerSelection
     }
-    else if (playerSelection === 'quit' || 'stop') {
-        return
-    }
-    // else if (playerSelection === null) {
-    //     alert('Invalid Input')
-    //     return
-    // }
     else {
         computerScore++
         result = 'You lose! ' + computerSelection + ' beats ' + playerSelection
     }
+    
     if (playerScore === 3) {
         result = 'You won the game!'
         playerScore = 0
@@ -54,8 +73,8 @@ function playRound() {
     }
     else {
         roundCounter++
-        print(result)
-        print('Player Score: ' + playerScore + ' |' + ' Opponent Score: ' + computerScore )
+        console.log(result)
+        console.log('Player Score: ' + playerScore + ' |' + ' Opponent Score: ' + computerScore )
     }
     
 
